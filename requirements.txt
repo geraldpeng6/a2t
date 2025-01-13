@@ -1,5 +1,61 @@
-openai-whisper==20231117
-torch==2.1.2
-torchaudio==2.1.2
-numpy==1.26.3
-ffmpeg-python==0.2.0
+audioread==3.0.1
+Brotli @ file:///private/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_f7i0oxypt6/croot/brotli-split_1736182464088/work
+certifi @ file:///private/var/folders/nz/j6p8yfhx1mv_0grj5xl4650h0000gp/T/abs_d8j59rqun5/croot/certifi_1734473289913/work/certifi
+cffi==1.17.1
+charset-normalizer==3.4.1
+decorator==5.1.1
+filelock==3.16.1
+fsspec==2024.12.0
+gmpy2 @ file:///Users/cbousseau/work/recipes/ci_py311/gmpy2_1677937751357/work
+huggingface-hub==0.27.1
+idna==3.10
+imageio==2.36.1
+imageio-ffmpeg==0.5.1
+Jinja2==3.1.5
+joblib==1.4.2
+lazy_loader==0.4
+librosa==0.10.2.post1
+llvmlite==0.43.0
+MarkupSafe==3.0.2
+more-itertools==10.5.0
+moviepy==2.1.2
+mpmath @ file:///private/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_17iu6a8a3m/croot/mpmath_1690848269369/work
+msgpack==1.1.0
+networkx==3.4.2
+numba==0.60.0
+numpy==1.26.4
+openai-whisper==20240930
+packaging==24.2
+pillow==10.4.0
+platformdirs==4.3.6
+pooch==1.8.2
+proglog==0.1.10
+protobuf==5.29.3
+PyAudio==0.2.14
+pycparser==2.22
+PySocks @ file:///Users/cbousseau/work/recipes/ci_py311/pysocks_1677906386870/work
+python-dotenv==1.0.1
+PyYAML @ file:///private/var/folders/nz/j6p8yfhx1mv_0grj5xl4650h0000gp/T/abs_faoex52hrr/croot/pyyaml_1728657970485/work
+regex==2024.11.6
+requests @ file:///private/var/folders/nz/j6p8yfhx1mv_0grj5xl4650h0000gp/T/abs_ee45nsd33z/croot/requests_1730999134038/work
+safetensors==0.5.2
+scikit-learn==1.6.1
+scipy==1.15.1
+sentencepiece==0.2.0
+sounddevice==0.5.1
+soundfile==0.13.0
+soxr==0.5.0.post1
+srt==3.5.3
+sympy @ file:///private/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_277mj9wayq/croot/sympy_1734622627768/work
+threadpoolctl==3.5.0
+tiktoken==0.8.0
+tokenizers==0.21.0
+torch==2.4.1
+torchaudio==2.3.0
+torchvision==0.20.1
+tqdm==4.67.1
+transformers==4.48.0
+typing_extensions @ file:///private/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_0b3jpv_f79/croot/typing_extensions_1734714864260/work
+urllib3==2.3.0
+vosk==0.3.44
+websockets==14.1

@@ -1,0 +1,16 @@
+2025-01-13 09:04:38,934 - INFO - 开始实时转写...
+2025-01-13 09:04:39,285 - INFO - 实时转写已启动。日志文件保存在: transcription.log
+2025-01-13 09:04:43,630 - INFO - 识别结果: Say hello like that
+2025-01-13 09:04:44,052 - INFO - 识别结果: I just wanted to go to the beach and talk to her
+2025-01-13 09:04:47,292 - INFO - 识别结果: Sit right here
+2025-01-13 09:04:52,146 - INFO - 识别结果: It's been so long
+2025-01-13 09:04:54,700 - INFO - 识别结果: It was too hard. I was spinning before
+2025-01-13 09:04:56,987 - INFO - 识别结果: Wearing a new brand will conquer it
+2025-01-13 09:04:59,646 - INFO - 识别结果: I'm cool I took a very real car
+2025-01-13 09:05:00,059 - INFO - 识别结果: No, no, no Why are you guys...
+2025-01-13 09:05:01,839 - INFO - 识别结果: I don't have a choice I'll give you a choice I may have to go first
+2025-01-13 09:05:03,811 - INFO - 识别结果: Oh, don't you wait for me to get water for you
+2025-01-13 09:05:07,672 - ERROR - 音频处理错误: set_grad_enabled() received an invalid combination of arguments - got (bool), but expected one of:
+
+2025-01-13 09:05:07,775 - ERROR - 音频处理错误: device() received an invalid combination of arguments - got (str), but expected one of:
+

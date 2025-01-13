@@ -115,7 +115,6 @@ class SubtitleWindow:
         
         # 设置窗口属性
         self.root.attributes('-topmost', True)  # 窗口置顶
-        self.root.attributes('-alpha', 0.8)     # 设置透明度
         self.root.overrideredirect(True)        # 移除窗口边框
         
         # 获取屏幕尺寸
@@ -124,34 +123,90 @@ class SubtitleWindow:
         
         # 设置窗口大小和位置（底部居中）
         window_width = int(screen_width * 0.8)  # 使用80%的屏幕宽度
-        window_height = 120
+        window_height = 180
         x = (screen_width - window_width) // 2
         y = screen_height - window_height - 100  # 距离底部100像素
         self.root.geometry(f'{window_width}x{window_height}+{x}+{y}')
         
         # 创建主框架
-        self.main_frame = tk.Frame(self.root, bg='black')
+        self.main_frame = tk.Frame(self.root, bg='systemTransparent')
         self.main_frame.pack(fill='both', expand=True)
         
-        # 创建标签用于显示字幕
+        # 创建字幕显示标签
         self.subtitle_label = tk.Label(
             self.main_frame,
             text="等待音频输入...",
-            font=('SimHei', 16),  # 增大字体
+            font=('SimHei', 24),  # 增大字体
             wraplength=window_width - 40,
             justify='center',
-            bg='black',
             fg='white',
-            pady=20
+            pady=20,
+            highlightthickness=1,  # 添加描边效果
+            highlightbackground='white'  # 设置描边颜色
         )
         self.subtitle_label.pack(expand=True)
+        
+        # 创建控制面板
+        self.create_control_panel()
         
         # 绑定右键菜单用于退出
         self.create_context_menu()
         
         # 绑定拖动事件
-        self.subtitle_label.bind('<Button-1>', self.start_move)
-        self.subtitle_label.bind('<B1-Motion>', self.on_drag)
+        self.root.bind('<Button-1>', self.start_move)
+        self.root.bind('<B1-Motion>', self.on_drag)
+        
+    def create_control_panel(self):
+        """创建控制面板"""
+        control_frame = tk.Frame(self.main_frame, bg='systemTransparent')
+        control_frame.pack(side='bottom', fill='x')
+        
+        # 语言选择
+        tk.Label(control_frame, text="语言:", bg='systemTransparent', fg='white').pack(side='left', padx=5)
+        self.language_var = tk.StringVar(value='zh')
+        language_menu = ttk.Combobox(control_frame, textvariable=self.language_var, values=[
+            'zh', 'en', 'ja', 'fr', 'es', 'de', 'it', 'ko', 'ru', 'pt', 'nl', 'sv', 'fi'
+        ])
+        language_menu.pack(side='left')
+        language_menu.bind('<<ComboboxSelected>>', self.update_language)
+        
+        # 翻译选项
+        self.translate_var = tk.BooleanVar(value=args.translate)
+        translate_check = tk.Checkbutton(control_frame, text="翻译", variable=self.translate_var, bg='systemTransparent', fg='white', command=self.update_translate)
+        translate_check.pack(side='left', padx=5)
+        
+        # 透明度调整
+        tk.Label(control_frame, text="透明度:", bg='systemTransparent', fg='white').pack(side='left', padx=5)
+        self.alpha_scale = tk.Scale(control_frame, from_=0.0, to=1.0, resolution=0.1, orient='horizontal', bg='systemTransparent', fg='white', command=self.update_alpha)
+        self.alpha_scale.set(0.0)
+        self.alpha_scale.pack(side='left')
+        
+        # 字体颜色选择
+        tk.Label(control_frame, text="颜色:", bg='systemTransparent', fg='white').pack(side='left', padx=5)
+        self.color_var = tk.StringVar(value='white')
+        color_menu = ttk.Combobox(control_frame, textvariable=self.color_var, values=['white', 'yellow', 'cyan', 'green', 'red'])
+        color_menu.pack(side='left')
+        color_menu.bind('<<ComboboxSelected>>', self.update_color)
+        
+    def update_language(self, event):
+        """更新语言设置"""
+        args.language = self.language_var.get()
+        logging.info(f"语言设置为: {args.language}")
+        
+    def update_translate(self):
+        """更新翻译设置"""
+        args.translate = self.translate_var.get()
+        logging.info(f"翻译设置为: {args.translate}")
+        
+    def update_alpha(self, value):
+        """更新窗口透明度"""
+        self.main_frame.configure(bg=f'#{int(float(value) * 255):02x}000000')
+        
+    def update_color(self, event):
+        """更新字幕颜色"""
+        color = self.color_var.get()
+        self.subtitle_label.config(fg=color)
+        logging.info(f"字幕颜色设置为: {color}")
         
     def create_context_menu(self):
         """创建右键菜单"""
